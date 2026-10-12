@@ -4,32 +4,56 @@ using System.Collections.Generic;
 
 public class OrderManager : MonoBehaviour
 {
-    private List<CustomerOrder> pendingOrders = new List<CustomerOrder>();
+    [SerializeField] private int maxActiveOrders = 5;
+    [SerializeField] private OrderHUD orderHUD;
+
+    private List<CustomerOrder> activeOrders = new List<CustomerOrder>();
     private List<CustomerOrder> readyOrders = new List<CustomerOrder>();
 
-    public List<CustomerOrder> PendingOrders => pendingOrders;
+    public List<CustomerOrder> ActiveOrders => activeOrders;
     public List<CustomerOrder> ReadyOrders => readyOrders;
     
-    public void AddOrder(CustomerOrder order)
+    public bool HasSpace()
     {
-        pendingOrders.Add(order);
-
-        Debug.Log("Nueva comanda: " + order.clientType + " pide " +  order.potionType + ". Paciencia: " + order.currentPatience + " segundos.");
-        Debug.Log("Pedidos pendientes: " + pendingOrders.Count);
+        return activeOrders.Count < maxActiveOrders;
     }
 
-    public void CompleteOrder(CustomerOrder order)
+    public bool AddOrder(CustomerOrder order)
     {
-        if (pendingOrders.Remove(order))
+        if (!HasSpace())
+        {
+            Debug.Log("Ya tienes el máximo de encargos.");
+            return false;
+        }
+
+        activeOrders.Add(order);
+        Debug.Log("Nueva comanda: " + order.clientType + " pide " + order.potionType);
+        orderHUD.RefreshHUD();
+        return true;
+    }
+
+    public void MarkOrderReady(CustomerOrder order)
+    {
+        if (activeOrders.Contains(order) && !readyOrders.Contains(order))
         {
             readyOrders.Add(order);
-            Debug.Log("Pedido listo. Pedidos listso: " + readyOrders.Count);
+            Debug.Log("Pocion preparada: " + order.potionType);
+        }
+    }
+
+    public void DeliverOrder(CustomerOrder order)
+    {
+        if (activeOrders.Remove(order))
+        {
+            readyOrders.Remove(order);
+            Debug.Log("Pedido entregado. Encargos activos: " + activeOrders.Count);
+            orderHUD.RefreshHUD();
         }
     }
 
     private void Update()
     {
-        foreach (CustomerOrder order in pendingOrders)
+        foreach (CustomerOrder order in activeOrders)
         {
             if (order.currentPatience > 0)
             {

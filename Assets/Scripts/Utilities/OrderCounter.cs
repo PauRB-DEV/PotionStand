@@ -69,7 +69,10 @@ public class OrderCounter : MonoBehaviour, IInteractable
 
         CustomerOrder order = client.CreateOrder();
 
-        orderManager.AddOrder(order);
+        if (!orderManager.AddOrder(order))
+        {
+            return;
+        }
 
         clientQueue.RemoveAt(0);
         client.Leave(GetExitPosition());
