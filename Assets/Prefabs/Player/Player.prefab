@@ -278,7 +278,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementController
   moveSpeed: 5
   rotationSpeed: 10
+  dashpower: 25
+  dashtime: 0.2
+  dashCooldown: 0.8
   move: {fileID: -8662330591732131634, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
+  Dash: {fileID: 1082570446107588803, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &251048073747161206
 MonoBehaviour:
   m_ObjectHideFlags: 0
