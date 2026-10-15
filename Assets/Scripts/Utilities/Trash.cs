@@ -2,12 +2,9 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour, IInteractable
 {
-    public void Interact()
+    public void Interact(PlayerInventory inventory)
     {
         Debug.Log("Interactuando con la basura");
-
-        PlayerInventory inventory =
-            FindFirstObjectByType<PlayerInventory>();
 
         if (inventory == null)
         {
@@ -21,16 +18,26 @@ public class Trash : MonoBehaviour, IInteractable
             return;
         }
 
-        Ingredient ingredient = inventory.Drop();
-
-        if (ingredient == null)
+        if (inventory.HeldIngredient != null)
         {
-            Debug.LogError("Drop() ha devuelto null");
-            return;
+            Ingredient ingredient = inventory.DropIngredient();
+
+            if (ingredient != null)
+            {
+                Debug.Log("Destruyendo ingrediente: " + ingredient.name);
+                Destroy(ingredient.gameObject);
+            }
         }
+        // Tirar botella
+        else if (inventory.HeldBottle != null)
+        {
+            Bottle bottle = inventory.DropBottle();
 
-        Debug.Log("Destruyendo: " + ingredient.name);
-
-        Destroy(ingredient.gameObject);
+            if (bottle != null)
+            {
+                Debug.Log("Destruyendo botella: " + bottle.name);
+                Destroy(bottle.gameObject);
+            }
+        }
     }
 }

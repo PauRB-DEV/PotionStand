@@ -11,5 +11,7 @@ public enum IngredientType
     DragonScale,
     FairyDust,
     PoisonMushroom,
-    FrogLeg
+    FrogLeg,
+    GroundOrgeHorn,
+    LunarPetal
 }

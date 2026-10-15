@@ -51,21 +51,43 @@ public class OrderManager : MonoBehaviour
         }
     }
 
+    public void CancelOrder(CustomerOrder order)
+    {
+        if (activeOrders.Remove(order))
+        {
+            readyOrders.Remove(order);
+
+            Debug.Log("Pedido cancelado, tiempo agotado: " + order.clientType);
+
+            orderHUD.RefreshHUD();
+        }
+    }
+
     private void Update()
     {
+        List<CustomerOrder> expiredOrders = new List<CustomerOrder>();
+
         foreach (CustomerOrder order in activeOrders)
         {
             if (order.currentPatience > 0)
             {
                 order.currentPatience -= Time.deltaTime;
 
-                if (order.currentPatience < 0)
+                if (order.currentPatience <= 0)
                 {
                     order.currentPatience = 0;
-                    
-                    Debug.Log("La paciencia del cliente se ha agotado");
+                    expiredOrders.Add(order);
                 }
             }
+            else
+            {
+                expiredOrders.Add(order);
+            }
+        }
+
+        foreach (CustomerOrder order in expiredOrders)
+        {
+            CancelOrder(order);
         }
     }
 }

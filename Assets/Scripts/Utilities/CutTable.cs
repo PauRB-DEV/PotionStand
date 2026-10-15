@@ -14,9 +14,8 @@ public class CutTable : MonoBehaviour, IInteractable, IUsable
 
     private Ingredient storedIngredient;
 
-    public void Interact()
+    public void Interact(PlayerInventory inventory)
     {
-        PlayerInventory inventory = FindFirstObjectByType<PlayerInventory>();
 
         if (inventory == null)
         {
@@ -36,7 +35,7 @@ public class CutTable : MonoBehaviour, IInteractable, IUsable
                 progressUI.HideProgress();
             }
 
-            storedIngredient = inventory.Drop();
+            storedIngredient = inventory.DropIngredient();
 
             storedIngredient.transform.SetParent(itemPostion);
             storedIngredient.transform.localPosition = Vector3.zero;

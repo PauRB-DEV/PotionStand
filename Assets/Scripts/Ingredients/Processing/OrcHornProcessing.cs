@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class OrcHornProcessing : MonoBehaviour, IIngredientProcessor
 {
+    [SerializeField] private Ingredient processedPrefab;
     [SerializeField] private int actionsRequired = 4;
 
     private int actionsDone = 0;
@@ -11,13 +12,38 @@ public class OrcHornProcessing : MonoBehaviour, IIngredientProcessor
 
     public void ProcessIngredient()
     {
-        Debug.Log("Iniciando minijuego para moler el cuerno del orco");
+        if (isProcessed)
+        {
+            return;
+        }
+
+        actionsDone++;
+
+        OnProgressChanged?.Invoke(actionsDone, actionsRequired);
+
+        Debug.Log("Procesando: " + actionsDone + "/" + actionsRequired);
+
+        if (actionsDone >= actionsRequired)
+        {
+            isProcessed = true;
+
+            if (cutTable != null)
+            {
+                Debug.Log("Tabla encontrada, sustituyendo ingrediente.");
+                cutTable.ReplaceIngredient(processedPrefab);
+            }
+            else
+            {
+                Debug.Log("No se ha encontrado ninguna Tabla de cortar");
+            }
+        }
     }
 
     public void SetCutTable(CutTable table)
     {
         cutTable = table;
     }
+
     public int CurrentProgress => actionsDone;
 
     public int RequiredProgress => actionsRequired;

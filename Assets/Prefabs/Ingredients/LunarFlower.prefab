@@ -139,3 +139,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b94f0c7ee350ce49b4008867a15bfc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LunarFlowerProcessing
+  processedPrefab: {fileID: 87273436221828002, guid: 03d2f7d64cfca4749b4b411b0d75f3de, type: 3}
+  actionsRequired: 4

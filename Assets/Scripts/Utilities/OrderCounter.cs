@@ -45,7 +45,7 @@ public class OrderCounter : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact()
+    public void Interact(PlayerInventory inventory)
     {
         if (clientQueue.Count == 0)
         {

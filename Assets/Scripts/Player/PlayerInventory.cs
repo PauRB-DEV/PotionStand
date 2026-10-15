@@ -5,9 +5,11 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Transform handPosition;
 
     private Ingredient heldIngredient;
+    private Bottle heldBottle;
 
-    public bool HasItem => heldIngredient != null;
     public Ingredient HeldIngredient => heldIngredient;
+    public bool HasItem => heldIngredient != null || heldBottle != null;
+    public Bottle HeldBottle => heldBottle;
 
     public bool PickUp(Ingredient ingredient)
     {
@@ -31,7 +33,30 @@ public class PlayerInventory : MonoBehaviour
         return true;
     }
 
-    public Ingredient Drop()
+    public bool PickUp(Bottle bottle)
+    {
+        if (HasItem || bottle == null)
+        {
+            return false;
+        }
+
+        heldBottle = bottle;
+
+        bottle.transform.SetParent(handPosition);
+        bottle.transform.localPosition = Vector3.zero;
+        bottle.transform.localRotation = Quaternion.identity;
+
+        Collider itemCollider = bottle.GetComponent<Collider>();
+
+        if (itemCollider != null)
+        {
+            itemCollider.enabled = false;
+        }
+
+        return true;
+    }
+
+    public Ingredient DropIngredient()
     {
         if (!HasItem)
         {
@@ -51,5 +76,28 @@ public class PlayerInventory : MonoBehaviour
         }
 
         return ingredient;
+    }
+
+    public Bottle DropBottle()
+    {
+        if (heldBottle == null)
+        {
+            return null;
+        }
+
+        Bottle bottle = heldBottle;
+        heldBottle = null;
+
+        bottle.transform.SetParent(null);
+
+        Collider itemCollider = bottle.GetComponent<Collider>();
+
+        if (itemCollider != null)
+        {
+            itemCollider.enabled = true;
+        }
+
+        return bottle;
+
     }
 }

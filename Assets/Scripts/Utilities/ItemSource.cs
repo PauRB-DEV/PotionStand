@@ -4,10 +4,8 @@ public class ItemSource : MonoBehaviour, IInteractable
 {
     [SerializeField] private Ingredient ingredientPrefab;
 
-    public void Interact()
+    public void Interact(PlayerInventory inventory)
     {
-        PlayerInventory inventory = FindFirstObjectByType<PlayerInventory>();
-
         if (inventory == null || inventory.HasItem)
         {
             return;

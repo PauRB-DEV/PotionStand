@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6141353889093465010}
   - component: {fileID: 6622853412317729132}
   - component: {fileID: 6256800895536122504}
+  - component: {fileID: 3991757460509202891}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Untagged
@@ -112,3 +113,82 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3991757460509202891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3194249838513016943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19103f7be4477846b02264c3488dd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cauldron
+  ingredientPosition: {fileID: 0}
+  cookingTime: 5
+  recipes:
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 0
+    ingredients: 01000000010000000a000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 1
+    ingredients: 0400000005000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 2
+    ingredients: 010000000100000009000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 3
+    ingredients: 08000000080000000a000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 4
+    ingredients: 06000000060000000a000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 5
+    ingredients: 070000000700000004000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 6
+    ingredients: 0a0000000a00000006000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 7
+    ingredients: 0700000004000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 8
+    ingredients: 050000000500000006000000
+  - isSpecialRecipe: 0
+    clientType: 0
+    potionType: 9
+    ingredients: 0a00000004000000
+  - isSpecialRecipe: 1
+    clientType: 3
+    potionType: 1
+    ingredients: 050000000500000009000000
+  - isSpecialRecipe: 1
+    clientType: 3
+    potionType: 5
+    ingredients: 07000000070000000a000000
+  - isSpecialRecipe: 1
+    clientType: 3
+    potionType: 7
+    ingredients: 0700000006000000
+  - isSpecialRecipe: 1
+    clientType: 5
+    potionType: 8
+    ingredients: 050000000500000005000000
+  - isSpecialRecipe: 1
+    clientType: 5
+    potionType: 4
+    ingredients: 0500000006000000
+  - isSpecialRecipe: 1
+    clientType: 2
+    potionType: 6
+    ingredients: 0a0000000a0000000a000000

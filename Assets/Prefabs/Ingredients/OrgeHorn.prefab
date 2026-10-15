@@ -139,3 +139,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebab98cb37583f143989042e5962a498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrcHornProcessing
+  processedPrefab: {fileID: 87273436221828002, guid: 958ba59d3f8fcb1498bb973a4ae9af87, type: 3}
+  actionsRequired: 4

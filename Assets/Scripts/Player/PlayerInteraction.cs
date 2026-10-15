@@ -8,6 +8,13 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private InputActionReference action;
     [SerializeField] private float interactDistance = 0.75f;
 
+    private PlayerInventory inventory;
+
+    private void Awake()
+    {
+        inventory = GetComponent<PlayerInventory>();
+    }
+
     private void Update()
     {
         if (grab.action.WasPressedThisFrame())
@@ -31,7 +38,7 @@ public class PlayerInteraction : MonoBehaviour
             Debug.Log($"He golpeado: {hit.collider.name}");
             if (hit.collider.TryGetComponent(out IInteractable interactable))
             {
-                interactable.Interact();
+                interactable.Interact(inventory);
             }
         }
         else

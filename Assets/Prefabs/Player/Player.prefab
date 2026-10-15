@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
   grab: {fileID: 8551372188339015495, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
-  action: {fileID: 0}
+  action: {fileID: 1169215812181927972, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
   interactDistance: 0.75
 --- !u!114 &172683326093876677
 MonoBehaviour:
