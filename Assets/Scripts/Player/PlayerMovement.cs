@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputActionReference Dash;
 
     private Rigidbody rb;
+    private PlayerInventory inventory;
     private Vector2 moveDirection;
     private Vector3 dashDirection;
     private float dashTimer = 0f;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Obtenemos el Rigidbody del jugador para moverlo respetando físicas y paredes
         rb = GetComponent<Rigidbody>();
+        inventory = GetComponent<PlayerInventory>();
     }
 
     private void OnEnable()
@@ -180,5 +182,33 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Debug.Log($"<color=cyan>[DASH ACTIVADO]</color> Dirección: {dashDirection} | Potencia: {dashpower} | Duración: {dashTimer}s");
+
+        // 30% de probabilidad de que el item se caiga de las manos al dashear
+        TryDropItemOnDash();
+    }
+
+    private void TryDropItemOnDash()
+    {
+        if (inventory == null || !inventory.HasItem) return;
+
+        bool itemDrops = Random.value < 0.3f;
+        if (!itemDrops) return;
+
+        // Colocamos el item a la misma altura que el origen del raycast para que se pueda recoger
+        Vector3 raycastHeight = new Vector3(0f, -0.5f, 0f);
+        Vector3 dropPosition = transform.position + raycastHeight + transform.forward * 0.5f;
+
+        if (inventory.HeldIngredient != null)
+        {
+            Ingredient ingredient = inventory.DropIngredient();
+            ingredient.transform.position = dropPosition;
+            Debug.Log($"<color=orange>[DASH] ¡Se te ha caído: {ingredient.IngredientType}!</color>");
+        }
+        else if (inventory.HeldBottle != null)
+        {
+            Bottle bottle = inventory.DropBottle();
+            bottle.transform.position = dropPosition;
+            Debug.Log("<color=orange>[DASH] ¡Se te ha caído la botella!</color>");
+        }
     }
 }
