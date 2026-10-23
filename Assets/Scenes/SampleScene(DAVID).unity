@@ -660,34 +660,6 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d844f5fc5eb46364db6fd7ead1de4746, type: 2}
-    - target: {fileID: 2340554830136018940, guid: ef7cb569a82588547b149efa1f5aecd0, type: 3}
-      propertyPath: drop
-      value: 
-      objectReference: {fileID: 6276339513826019528, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
-    - target: {fileID: 2340554830136018940, guid: ef7cb569a82588547b149efa1f5aecd0, type: 3}
-      propertyPath: action
-      value: 
-      objectReference: {fileID: 1169215812181927972, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
-    - target: {fileID: 2340554830136018940, guid: ef7cb569a82588547b149efa1f5aecd0, type: 3}
-      propertyPath: interactDistance
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2980176599238778717, guid: ef7cb569a82588547b149efa1f5aecd0, type: 3}
-      propertyPath: dashtime
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2980176599238778717, guid: ef7cb569a82588547b149efa1f5aecd0, type: 3}
-      propertyPath: dashpower
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2980176599238778717, guid: ef7cb569a82588547b149efa1f5aecd0, type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2980176599238778717, guid: ef7cb569a82588547b149efa1f5aecd0, type: 3}
-      propertyPath: rotationSpeed
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4550306758987776499, guid: ef7cb569a82588547b149efa1f5aecd0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.428

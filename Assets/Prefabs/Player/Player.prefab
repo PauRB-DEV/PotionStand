@@ -277,9 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementController
   moveSpeed: 5
-  rotationSpeed: 10
-  dashpower: 25
-  dashtime: 0.2
+  rotationSpeed: 6
+  dashpower: 8
+  dashtime: 0.4
   dashCooldown: 0.8
   move: {fileID: -8662330591732131634, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
   Dash: {fileID: 1082570446107588803, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -354,7 +354,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
   grab: {fileID: 8551372188339015495, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
   action: {fileID: 1169215812181927972, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
+  drop: {fileID: 6276339513826019528, guid: 2d9053792bb01e041bf4c84fa616cd88, type: 3}
   interactDistance: 0.75
+  dropDistance: 0.6
 --- !u!114 &172683326093876677
 MonoBehaviour:
   m_ObjectHideFlags: 0
