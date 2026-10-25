@@ -36,6 +36,7 @@ public class PlayerInteraction : MonoBehaviour
 
     // Recoger un item del suelo o interactuar con algo (mesas, calderos, etc.)
     // Usa SphereCast para tener más tolerancia al apuntar hacia el suelo
+
     private void Grab()
     {
         Vector3 rayOrigin = transform.position + Vector3.up * -0.5f;
@@ -44,9 +45,31 @@ public class PlayerInteraction : MonoBehaviour
         if (Physics.SphereCast(rayOrigin, sphereRadius, transform.forward, out RaycastHit hit, interactDistance))
         {
             Debug.Log($"He golpeado: {hit.collider.name}");
-            if (hit.collider.TryGetComponent(out IInteractable interactable))
+
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+            if (interactable == null)
+            {
+                interactable = hit.collider.GetComponentInParent<IInteractable>();
+                Debug.Log("Collider golpeado: " + hit.collider.name);
+
+                Debug.Log("Ingredient: " +
+                    (hit.collider.GetComponentInParent<Ingredient>() != null));
+
+                Debug.Log("Bottle: " +
+                    (hit.collider.GetComponentInParent<Bottle>() != null));
+
+                Debug.Log("IInteractable: " +
+                    (hit.collider.GetComponentInParent<IInteractable>() != null));
+            }
+
+            if (interactable != null)
             {
                 interactable.Interact(inventory);
+            }
+            else
+            {
+                Debug.Log("El objeto no tiene IInteractable");
             }
         }
         else
@@ -54,6 +77,7 @@ public class PlayerInteraction : MonoBehaviour
             Debug.Log("No hay nada delante");
         }
     }
+
 
     // Usar el item que tienes en la mano sobre algo (usar maquinas, etc.)
     private void Interact()

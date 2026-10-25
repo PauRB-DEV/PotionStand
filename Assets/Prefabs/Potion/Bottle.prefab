@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2751450029376928052}
   - component: {fileID: 7869520823905288113}
   - component: {fileID: 6795590111944236606}
+  - component: {fileID: 2000652167876287721}
   m_Layer: 0
   m_Name: Bottle
   m_TagString: Untagged
@@ -116,6 +117,29 @@ MonoBehaviour:
   amnesiaMaterial: {fileID: 2100000, guid: 00c0eba49868ecf4caaeb31804ae879f, type: 2}
   fireMaterial: {fileID: 2100000, guid: c36f3e1e6349e9646a1cb4dca61065cd, type: 2}
   invisibilityMaterial: {fileID: 2100000, guid: e1b1b22874855154caedbfe4f1421eef, type: 2}
+--- !u!136 &2000652167876287721
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4265458636811334876}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5379317994809601016
 GameObject:
   m_ObjectHideFlags: 0
